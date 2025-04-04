@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- שמירה על כותרת העמוד הראשית כפי שהייתה -->
+  <title>עו"ד ישראל סולימן - דף הבית</title>
+
+  <!-- טעינת פונט מסולסל (Google Fonts) -->
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <style>
+    /* איפוס בסיסי */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Alef", Arial, sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      direction: rtl;
+      margin: 0; /* ביטול מרווחים ברירת מחדל */
+    }
+
+    /* משתני צבעים: כחול וזהב */
+    :root {
+      --main-blue: #00274d;
+      --secondary-blue: #00509e;
+      --gold: #ffd700;
+      --dark-gold: #ccad00;
+    }
+
+    /* כותרת עליונה (Header) */
+    header {
+      background-color: var(--main-blue);
+      color: #fff;
+      padding: 1rem;
+      position: relative;
+      z-index: 100;
+    }
+    .top-bar {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    /* לוגו + טקסט מסולסל */
+    .logo {
+      display: flex;
+      align-items: center;
+    }
+    .logo-img {
+      height: 70px;
+      width: 50px;
+    }
+    /* טקסט "ישראל סולימן" בפונט מסולסל */
+    .logo-text {
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.5rem;
+      margin-right: 1rem;
+      color: var(--gold);
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+    }
+
+    /* הניווט עצמו */
+    nav ul {
+      list-style: none;
+      display: flex; /* דסקטופ: תצוגה רגילה */
+      gap: 1.5rem;
+      margin-left: 2rem; /* מעט רווח משמאל ללוגו */
+    }
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: var(--gold);
+    }
+
+    /* כפתור ה-Hamburger (מוסתר בדסקטופ) */
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 2rem;
+      color: #fff;
+      cursor: pointer;
+      margin-left: 1rem;
+    }
+
+    /* בכדי שנוכל לפתוח ולסגור את התפריט במובייל */
+    .nav-open {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 70px; /* תחת ה-header */
+      right: 0;
+      background-color: var(--main-blue);
+      padding: 1rem 2rem;
+      gap: 1rem;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    }
+    .nav-closed {
+      display: none;
+    }
+
+    /* מעבר למסך צר - מציגים את כפתור ההמבורגר ומסתירים את ה-ul */
+    @media (max-width: 768px) {
+      nav ul {
+        display: none; /* מוסתר בברירת מחדל במובייל */
+      }
+      .menu-toggle {
+        display: block; /* מוצג רק במסך צר */
+      }
+    }
+
+    /* אזור Hero */
+    .hero {
+      position: relative;
+      background: url("images/hero-background.jpg") no-repeat center center/cover;
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-color: rgba(0, 39, 77, 0.6); /* שכבת שקיפות כחולה כהה */
+    }
+    .hero .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      padding: 2rem;
+    }
+    .hero h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: var(--gold);
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+    }
+    .hero p {
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: #fff;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    }
+    .hero a {
+      background-color: var(--gold);
+      color: #000;
+      text-decoration: none;
+      padding: 0.75rem 1.5rem;
+      font-weight: bold;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+    .hero a:hover {
+      background-color: var(--dark-gold);
+    }
+
+    /* תוכן מרכזי */
+    main {
+      max-width: 1200px;
+      margin: 2rem auto;
+      padding: 0 1rem;
+    }
+    section {
+      background: #fff;
+      margin-bottom: 2rem;
+      padding: 2rem;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    section h2 {
+      color: var(--main-blue);
+      margin-bottom: 1rem;
+    }
+
+    /* תחומי התמחות */
+    .services-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .service-item {
+      background-color: #f0f0f0;
+      padding: 1rem;
+      border-radius: 6px;
+      transition: box-shadow 0.3s;
+    }
+    .service-item:hover {
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .service-item h3 {
+      margin-bottom: 0.5rem;
+      color: var(--secondary-blue);
+    }
+
+    /* הצוות */
+    .team-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      justify-content: center;
+      text-align: center;
+    }
+    .team-member {
+      width: 200px;
+    }
+    .team-member img {
+      width: 150px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid var(--gold);
+      margin-bottom: 1rem;
+    }
+    .team-member h3 {
+      margin-bottom: 0.5rem;
+      color: var(--secondary-blue);
+      font-size: 1.1rem;
+    }
+
+    /* טופס "שאל שאלה" */
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    form label {
+      font-weight: bold;
+    }
+    form input,
+    form textarea {
+      padding: 0.75rem;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      width: 100%;
+      resize: vertical;
+    }
+    form button {
+      width: 150px;
+      padding: 0.75rem;
+      background-color: var(--main-blue);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    form button:hover {
+      background-color: var(--secondary-blue);
+    }
+
+    /* פוטר */
+    footer {
+      background-color: var(--main-blue);
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+    }
+    footer p {
+      margin: 0.5rem 0;
+    }
+
+    /* סגנונות נוספים מתחת לכותרת 'תחומי התמחות' וכו' */
+    .practice-areas {
+      padding: 2rem;
+      max-width: 1200px;
+      margin: 0 auto; /* מרכז את התוכן */
+    }
+    .areas-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .area-card {
+      background-color: #fff;
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+      text-align: center;
+    }
+    .area-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    }
+    .area-card img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 1rem;
+    }
+    .area-card h3 {
+      margin: 0.5rem 0 1rem;
+      color: #333;
+    }
+    .area-card p {
+      line-height: 1.6;
+      color: #555;
+    }
+
+    .testimonials {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      padding: 2rem 0;
+    }
+    .testimonial {
+      background: #f9f9f9;
+      border-radius: 8px;
+      padding: 1rem;
+      width: 300px;
+      text-align: center;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    .testimonial:hover {
+      transform: translateY(-5px);
+    }
+    .testimonial img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin-bottom: 1rem;
+    }
+    .rating span {
+      color: gold;
+      font-size: 1.2rem;
+      margin: 0 2px;
+    }
+
+  </style>
+
+  <!-- שמירה על הכותרת הנוספת "תחומי התמחות" אם היא חשובה למנועי חיפוש -->
+  <title>תחומי התמחות</title>
+</head>
+
+<body>
+  <!-- כותרת עליונה -->
+  <header>
+    <div class="top-bar">
+      <!-- לוגו + טקסט מסולסל -->
+      <div class="logo">
+        <img src="images/logo.png" alt="עו"ד ישראל סולימן" class="logo-img">
+        <h1 class="logo-text">ישראל סולימן</h1>
+      </div>
+      <!-- כפתור תפריט (המבורגר) -->
+      <button class="menu-toggle" aria-label="פתח תפריט">&#9776;</button>
+      <!-- ניווט: בדסקטופ – יופיע כרגיל, במובייל – יוסתר עד לחיצה על כפתור -->
+      <nav>
+        <ul id="navList">
+          <li><a href="about.html">אודות</a></li>
+          <li><a href="#services">תחומי התמחות</a></li>
+          <li><a href="#team">הצוות</a></li>
+          <li><a href="#ask">שאל שאלה</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- אזור Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h2>ייצוג משפטי במרכז העשייה</h2>
+      <p>מומחים בחוזי נדל"ן, תביעות ייצוגיות, עוולות ולשון הרע - כאן כדי להוביל אותך להצלחה</p>
+      <a href="#ask">שאל שאלה עוד היום</a>
+    </div>
+  </section>
+
+  <!-- תוכן מרכזי -->
+  <main>
+    <h2>תחומי התמחות</h2>
+    <section class="practice-areas">
+      <div class="areas-container">
+        <!-- כרטיס 1 -->
+        <div class="area-card">
+          <img src="images/law-icon1.png" alt="אייקון לשון הרע">
+          <h3>לשון הרע</h3>
+          <p>
+            הסבר קצר על התחום, מה הוא כולל, אילו תביעות אפשר להגיש וכדומה.
+          </p>
+        </div>
+        <!-- כרטיס 2 -->
+        <div class="area-card">
+          <img src="images/law-icon2.png" alt="אייקון עילות נזיקין">
+          <h3>עילות (נזיקין)</h3>
+          <p>
+            פירוט קצר על נזקי גוף, נזקי רכוש, רשלנות וכדומה.
+          </p>
+        </div>
+        <!-- כרטיס 3 -->
+        <div class="area-card">
+          <img src="images/law-icon3.png" alt="אייקון תביעות ייצוגיות">
+          <h3>תביעות ייצוגיות</h3>
+          <p>
+            הסבר על תביעות ייצוגיות, מה היתרונות שלהן, למי זה מתאים ועוד.
+          </p>
+        </div>
+        <!-- כרטיס 4 -->
+        <div class="area-card">
+          <img src="images/law-icon4.png" alt="אייקון דיני משפחה">
+          <h3>דיני משפחה</h3>
+          <p>
+            הסבר קצר על הליכי גירושין, משמורת, צוואות, ירושות וכו'.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- הצוות -->
+    <section id="team">
+      <h2>הצוות המקצועי</h2>
+      <h2> </h2>
+      <div class="team-container">
+        <div class="team-member">
+          <img src="images/team1.jpg" alt="תמונת עו"ד צוות 1">
+          <h3>עו"ד מירית כהן</h3>
+          <p>מתמחה בחוזי נדל"ן ובליווי עסקאות מורכבות</p>
+        </div>
+        <div class="team-member">
+          <img src="images/team2.jpg" alt="תמונת עו"ד צוות 2">
+          <h3>עו"ד יוסי לוי</h3>
+          <p>מוביל תיקי תביעות ייצוגיות ורשלנות מקצועית</p>
+        </div>
+        <div class="team-member">
+          <img src="images/team3.jpg" alt="תמונת עו"ד צוות 3">
+          <h3>עו"ד דנה רוזן</h3>
+          <p>מומחית בתחום לשון הרע וזכויות אישיות</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- טופס "שאל שאלה" -->
+    <section id="ask">
+      <h2>שאל שאלה</h2>
+      <p>זקוקים לייעוץ או מענה משפטי? השאירו פרטים ונשמח לסייע:</p>
+      <!-- החלף את הכתובת לכתובת Formspree שלך אם שונה -->
+      <form action="https://formspree.io/f/xblgzqwo" method="POST">
+        <label for="askName">שם מלא</label>
+        <input type="text" id="askName" name="askName" required>
+
+        <label for="askPhone">טלפון</label>
+        <input type="tel" id="askPhone" name="askPhone" required>
+
+        <label for="askEmail">אימייל</label>
+        <input type="email" id="askEmail" name="askEmail" required>
+
+        <label for="askQuestion">השאלה שלך</label>
+        <textarea id="askQuestion" name="askQuestion" rows="5" required></textarea>
+
+        <button type="submit">שלח</button>
+      </form>
+    </section>
+
+    <!-- המלצות משתמשים -->
+    <title>המלצות משתמשים</title>
+    <section class="testimonials">
+      <div class="testimonial">
+        <img src="team2.jpg" alt="תמונת יוסי">
+        <h3>יוסי כהן</h3>
+        <div class="rating">
+          <span>&#9733;</span>
+          <span>&#9733;</span>
+          <span>&#9733;</span>
+          <span>&#9733;</span>
+          <span>&#9734;</span>
+        </div>
+        <p>"השירות היה מצוין ואני ממליץ בחום!"</p>
+      </div>
+      <div class="testimonial">
+        <img src="team1.jpg" alt="תמונת שרה">
+        <h3>שרה לוי</h3>
+        <div class="rating">
+          <span>&#9733;</span>
+          <span>&#9733;</span>
+          <span>&#9733;</span>
+          <span>&#9734;</span>
+          <span>&#9734;</span>
+        </div>
+        <p>"חוויה נהדרת, מומלץ מאוד."</p>
+      </div>
+      <!-- ניתן להוסיף כאן בלוקים נוספים לפי הצורך -->
+    </section>
+  </main>
+
+  <!-- פוטר -->
+  <footer>
+    <p>&copy; 2025 עו"ד ישראל סולימן - כל הזכויות שמורות.</p>
+    <p><small>אין באמור באתר זה להוות תחליף לייעוץ משפטי פרטני. לקבלת מידע מחייב, יש לפנות לייעוץ אישי מול עו"ד.</small></p>
+  </footer>
+
+  <!-- סקריפט לפתיחה/סגירה של התפריט במובייל -->
+  <script>
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navList = document.querySelector('#navList');
+
+    menuToggle.addEventListener('click', () => {
+      // אם הוא nav-open -> הפוך ל-nav-closed (הסתרה); אחרת פתח
+      if (navList.classList.contains('nav-open')) {
+        navList.classList.remove('nav-open');
+        navList.classList.add('nav-closed');
+      } else {
+        navList.classList.remove('nav-closed');
+        navList.classList.add('nav-open');
+      }
+    });
+  </script>
+</body>
+</html>
